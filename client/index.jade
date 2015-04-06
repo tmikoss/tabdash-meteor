@@ -2,6 +2,7 @@ head
   title Tabdash
 body
   +header
+  +weather
   
 template(name='header')
   .row
@@ -15,6 +16,29 @@ template(name='header')
       each namedays
         .text-muted
           = name
+
+template(name='weather')
+  table.table.forecasts
+    thead
+      tr
+        th
+        th °C
+        th
+    tbody
+      each forecasts
+        +weatherRow
+
+template(name='weatherRow')
+  tr
+    td.text-center.text-muted
+      = range
+    td.text-center
+      strong
+        = temperature
+    td.text-left
+      img(src="http://api.yr.no/weatherapi/weathericon/1.1/?symbol=#{code};content_type=image/png")
+      span.text-muted
+        = name
 
 //- .row{ 'ng-controller' => 'TimeCtrl' }
 //-   .col-xs-3

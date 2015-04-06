@@ -12,3 +12,11 @@ Template.header.helpers
   namedays: ->
     now = currentTime.get()
     Namedays.find(month: now.month() + 1, day: now.date()).fetch()
+
+Template.weather.helpers
+  forecasts: ->
+    Forecasts.find().fetch()
+
+Template.weatherRow.helpers
+  range: ->
+    "#{moment(@from).format 'HH:mm'} - #{moment(@to).format 'HH:mm'}"

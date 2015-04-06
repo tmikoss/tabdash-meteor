@@ -10,7 +10,11 @@ insecure
 coffeescript
 mquandalle:jade
 twbs:bootstrap
-momentjs:moment
 reactive-var
 fourseven:scss
 http
+meteorhacks:npm
+
+
+npm-container
+mrt:moment-timezone
