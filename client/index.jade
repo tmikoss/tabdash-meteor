@@ -1,0 +1,78 @@
+head
+  title Tabdash
+body
+  +header
+  
+template(name='header')
+  .row
+    .col-xs-3
+    .col-xs-6.text-center
+      .current-time
+        = formattedTime
+      .current-date.text-muted
+        = formattedDate
+    .col-xs-3.namedays
+
+
+//- .row{ 'ng-controller' => 'TimeCtrl' }
+//-   .col-xs-3
+//-   .col-xs-6.text-center
+//-     .current-time
+//-       {{ currentTime | date : 'HH:mm' }}
+//-     .current-date.text-muted
+//-       {{ currentTime | date : 'EEE dd MMM'}}
+//-   .col-xs-3.namedays
+//-     .text-muted{ 'ng-repeat' => 'nameday in namedays' }
+//-       {{ nameday.name }}
+//- 
+//- %carousel{ interval: "-1" }
+//-   %slide{ active: 'true' }
+//-     .slide-content{ 'ng-controller' => 'ForecastsCtrl' }
+//-       %table.table.forecasts
+//-         %thead
+//-           %tr
+//-             %th
+//-             %th °C
+//-             %th
+//-         %tbody
+//-           %tr.forecast{ 'ng-repeat' => "row in forecasts | orderBy : 'from'" }
+//-             %td.text-muted
+//-               {{ row.from | date : 'HH:mm' }} - {{ row.to | date : 'HH:mm' }}
+//-             %td
+//-               %strong {{ row.temperature }}
+//-             %td.text-left
+//-               %img{ 'ng-src' => 'http://api.yr.no/weatherapi/weathericon/1.1/?symbol={{ row.code }};content_type=image/png' }
+//-               %span.text-muted
+//-                 {{ row.name }}
+//- 
+//-   %slide
+//-     .slide-content{ 'ng-controller' => 'RouteGroupsCtrl' }
+//-       .row
+//-         .route-group{ 'ng-repeat' => "routeGroup in routeGroups | orderBy : 'priority' " }
+//-           %h1
+//-             {{ routeGroup.name }}
+//-             %span.text-muted
+//-               {{ routeGroup.upcoming[0].time.fromNow() }}
+//-           .run.row{ 'ng-repeat' => 'run in routeGroup.upcoming'}
+//-             .col-xs-4.text-right.col-xs-offset-1
+//-               {{ run.number }}
+//-               %img{ 'ng-src' => 'images/{{ run.kind }}.png' }
+//-             .col-xs-6.time.text-left
+//-               {{ run.time.fromNow() }}
+//- 
+//-   %slide
+//-     .slide-content{ 'ng-controller' => 'TrainsCtrl' }
+//-       %table.table.trains
+//-         %thead
+//-           %tr
+//-             %th
+//-             %th Dole
+//-             %th Salaspils
+//-         %tbody
+//-           %tr{ 'ng-repeat' => "train in trains | orderBy : 'time' " }
+//-             %td.text-muted
+//-               {{ train.time | date : 'HH:mm' }}
+//-             %td
+//-               %span.glyphicon.glyphicon-ok{ 'ng-if' => 'train.dole' }
+//-             %td
+//-               %span.glyphicon.glyphicon-ok{ 'ng-if' => 'train.salaspils' }

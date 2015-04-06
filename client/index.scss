@@ -1,0 +1,75 @@
+$scale-unit: 5px;
+
+.slide-content {
+  min-height:  $scale-unit * 200;
+  padding-top: $scale-unit * 4;
+}
+
+.carousel-control {
+  &.left, &.right {
+    background-image: none;
+    span {
+      display: none;
+    }
+  }
+}
+
+.carousel-indicators {
+  bottom: auto;
+  top: $scale-unit;
+
+  li {
+    border: 1px solid $text-color;
+
+    &.active {
+      background-color: $text-color;
+    }
+  }
+}
+
+.route-group {
+  .run {
+    font-size: $scale-unit * 4;
+
+    img {
+      width: $scale-unit * 6;
+    }
+
+    .time {
+      margin-top: $scale-unit / 2;
+    }
+  }
+}
+
+.forecasts {
+  font-size: $scale-unit * 4;
+
+  th {
+    text-align: center;
+  }
+}
+
+.namedays {
+  padding-top: $scale-unit * 4;
+  div {
+    padding-top: $scale-unit;
+    font-size: $scale-unit * 4;
+  }
+}
+
+.current-time {
+  font-size: $scale-unit * 20;
+  margin-bottom: $scale-unit * -6;
+}
+
+.current-date {
+  font-size: $scale-unit * 4;
+}
+
+.trains {
+  font-size: $scale-unit * 4;
+
+  th {
+    text-align: center;
+  }
+}
