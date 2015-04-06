@@ -12,7 +12,9 @@ template(name='header')
       .current-date.text-muted
         = formattedDate
     .col-xs-3.namedays
-
+      each namedays
+        .text-muted
+          = name
 
 //- .row{ 'ng-controller' => 'TimeCtrl' }
 //-   .col-xs-3
