@@ -40,37 +40,6 @@ template(name='weatherRow')
       span.text-muted
         = name
 
-//- .row{ 'ng-controller' => 'TimeCtrl' }
-//-   .col-xs-3
-//-   .col-xs-6.text-center
-//-     .current-time
-//-       {{ currentTime | date : 'HH:mm' }}
-//-     .current-date.text-muted
-//-       {{ currentTime | date : 'EEE dd MMM'}}
-//-   .col-xs-3.namedays
-//-     .text-muted{ 'ng-repeat' => 'nameday in namedays' }
-//-       {{ nameday.name }}
-//- 
-//- %carousel{ interval: "-1" }
-//-   %slide{ active: 'true' }
-//-     .slide-content{ 'ng-controller' => 'ForecastsCtrl' }
-//-       %table.table.forecasts
-//-         %thead
-//-           %tr
-//-             %th
-//-             %th °C
-//-             %th
-//-         %tbody
-//-           %tr.forecast{ 'ng-repeat' => "row in forecasts | orderBy : 'from'" }
-//-             %td.text-muted
-//-               {{ row.from | date : 'HH:mm' }} - {{ row.to | date : 'HH:mm' }}
-//-             %td
-//-               %strong {{ row.temperature }}
-//-             %td.text-left
-//-               %img{ 'ng-src' => 'http://api.yr.no/weatherapi/weathericon/1.1/?symbol={{ row.code }};content_type=image/png' }
-//-               %span.text-muted
-//-                 {{ row.name }}
-//- 
 //-   %slide
 //-     .slide-content{ 'ng-controller' => 'RouteGroupsCtrl' }
 //-       .row

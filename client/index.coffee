@@ -11,11 +11,11 @@ Template.header.helpers
 
   namedays: ->
     now = currentTime.get()
-    Namedays.find(month: now.month() + 1, day: now.date()).fetch()
+    Namedays.find({ month: now.month() + 1, day: now.date() }, { sort: { name: 1 }}).fetch()
 
 Template.weather.helpers
   forecasts: ->
-    Forecasts.find().fetch()
+    Forecasts.find({}, { sort: { from: 1 }}).fetch()
 
 Template.weatherRow.helpers
   range: ->
