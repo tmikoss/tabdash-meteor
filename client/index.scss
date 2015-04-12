@@ -1,30 +1,9 @@
 $scale-unit: 5px;
 $text-color: #aaa;
 
-.slide-content {
-  min-height:  $scale-unit * 200;
-  padding-top: $scale-unit * 4;
-}
-
-.carousel-control {
-  &.left, &.right {
-    background-image: none;
-    span {
-      display: none;
-    }
-  }
-}
-
-.carousel-indicators {
-  bottom: auto;
-  top: $scale-unit;
-
-  li {
-    border: 1px solid $text-color;
-
-    &.active {
-      background-color: $text-color;
-    }
+.carousel {
+  .item {
+    min-height:  $scale-unit * 200;
   }
 }
 

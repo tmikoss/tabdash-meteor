@@ -13,6 +13,17 @@ Template.header.helpers
     now = currentTime.get()
     Namedays.find({ month: now.month() + 1, day: now.date() }, { sort: { name: 1 }}).fetch()
 
+Template.carousel.onRendered = ->
+  @$('.carousel').carousel
+    interval: false
+
+Template.carousel.gestures
+  'swipeleft .carousel': (e, template) ->
+    template.$('.carousel').carousel 'prev'
+
+  'swiperight .carousel': (e, template) ->
+    template.$('.carousel').carousel 'next'
+
 Template.weather.helpers
   forecasts: ->
     Forecasts.find({}, { sort: { from: 1 }}).fetch()

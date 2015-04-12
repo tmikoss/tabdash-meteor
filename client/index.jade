@@ -2,9 +2,16 @@ head
   title Tabdash
 body
   +header
-  +trains
-  +weather
+  +carousel
   
+template(name='carousel')
+  .carousel
+    .carousel-inner
+      .item.active
+        +trains
+      .item
+        +weather
+        
 template(name='header')
   .row
     .col-xs-3
