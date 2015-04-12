@@ -6,8 +6,8 @@ stops =
   dole:      250
 
 updateTrains = ->
-  today    = moment()
-  tomorrow = moment().add(1, 'day')
+  today    = moment().tz('Europe/Riga').startOf 'day'
+  tomorrow = today.add(1, 'day')
 
   for date in [today, tomorrow]
     for stopName in ['salaspils', 'dole']
@@ -21,13 +21,11 @@ updateTrains = ->
         trainTime = date.clone()
         trainTime.hour(hour)
         trainTime.minute(minute)
-        trainTime.second(0)
-        trainTime.millisecond(0)
 
         fields = {}
         fields[stopName] = true
 
-        @Trains.upsert { time: trainTime._d }, $set: fields
+        @Trains.upsert { time: trainTime.toDate() }, $set: fields
 
   @Config.upsert { code: 'trains'}, $set: { updatedAt: new Date }
 

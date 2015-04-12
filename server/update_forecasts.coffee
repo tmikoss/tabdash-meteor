@@ -7,8 +7,8 @@ updateForecasts = ->
 
   for entry in json.weatherdata.forecast[0].tabular[0].time
     dates =
-      from: moment.tz(entry['$'].from, 'Europe/Riga')._d
-      to:   moment.tz(entry['$'].to,   'Europe/Riga')._d
+      from: moment.tz(entry['$'].from, 'Europe/Riga').toDate()
+      to:   moment.tz(entry['$'].to,   'Europe/Riga').toDate()
 
     details =
       code:        entry.symbol[0]['$'].number
