@@ -2,6 +2,7 @@ head
   title Tabdash
 body
   +header
+  +trains
   +weather
   
 template(name='header')
@@ -30,15 +31,38 @@ template(name='weather')
 
 template(name='weatherRow')
   tr
-    td.text-center.text-muted
-      = range
-    td.text-center
+    td.text-muted
+      = formattedTime
+    td
       strong
         = temperature
     td.text-left
       img(src="http://api.yr.no/weatherapi/weathericon/1.1/?symbol=#{code};content_type=image/png")
       span.text-muted
         = name
+        
+template(name='trains')
+  table.table.trains
+    thead
+      tr
+        th
+        th Dole
+        th Salaspils
+    tbody
+      each trains
+        +trainRow
+
+template(name='trainRow')
+  tr
+    td.text-muted
+      = formattedTime
+    td
+      if dole
+        span.glyphicon.glyphicon-ok
+    td
+      if salaspils
+        span.glyphicon.glyphicon-ok
+        
 
 //-   %slide
 //-     .slide-content{ 'ng-controller' => 'RouteGroupsCtrl' }
@@ -54,20 +78,3 @@ template(name='weatherRow')
 //-               %img{ 'ng-src' => 'images/{{ run.kind }}.png' }
 //-             .col-xs-6.time.text-left
 //-               {{ run.time.fromNow() }}
-//- 
-//-   %slide
-//-     .slide-content{ 'ng-controller' => 'TrainsCtrl' }
-//-       %table.table.trains
-//-         %thead
-//-           %tr
-//-             %th
-//-             %th Dole
-//-             %th Salaspils
-//-         %tbody
-//-           %tr{ 'ng-repeat' => "train in trains | orderBy : 'time' " }
-//-             %td.text-muted
-//-               {{ train.time | date : 'HH:mm' }}
-//-             %td
-//-               %span.glyphicon.glyphicon-ok{ 'ng-if' => 'train.dole' }
-//-             %td
-//-               %span.glyphicon.glyphicon-ok{ 'ng-if' => 'train.salaspils' }

@@ -18,5 +18,13 @@ Template.weather.helpers
     Forecasts.find({}, { sort: { from: 1 }}).fetch()
 
 Template.weatherRow.helpers
-  range: ->
+  formattedTime: ->
     "#{moment(@from).format 'HH:mm'} - #{moment(@to).format 'HH:mm'}"
+
+Template.trains.helpers
+  trains: ->
+    Trains.find({}, { sort: { time: 1 }}).fetch()
+
+Template.trainRow.helpers
+  formattedTime: ->
+    moment(@time).format 'HH:mm'

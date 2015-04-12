@@ -1,6 +1,6 @@
-updateForecasts = ->
-  parseXml = Meteor.wrapAsync Meteor.npmRequire('xml2js').parseString
+parseXml = Meteor.wrapAsync Meteor.npmRequire('xml2js').parseString
 
+updateForecasts = ->
   response = HTTP.get "http://www.yr.no/place/Latvia/Riga/Riga/forecast_hour_by_hour.xml"
 
   json = parseXml response.content
