@@ -23,19 +23,3 @@ Template.carousel.gestures
 
   'swiperight .carousel': (e, template) ->
     template.$('.carousel').carousel('prev').carousel('pause')
-
-Template.weather.helpers
-  forecasts: ->
-    Forecasts.find({}, { sort: { from: 1 }}).fetch()
-
-Template.weatherRow.helpers
-  formattedTime: ->
-    "#{moment(@from).format 'HH:mm'} - #{moment(@to).format 'HH:mm'}"
-
-Template.trains.helpers
-  trains: ->
-    Trains.find({}, { sort: { time: 1 }}).fetch()
-
-Template.trainRow.helpers
-  formattedTime: ->
-    moment(@time).format 'HH:mm'

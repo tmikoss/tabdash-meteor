@@ -1,0 +1,23 @@
+template(name='weather')
+  table.table.forecasts
+    thead
+      tr
+        th
+        th °C
+        th
+    tbody
+      each forecasts
+        +weatherRow
+
+template(name='weatherRow')
+  tr
+    td.text-muted
+      = formattedTime
+    td
+      strong
+        = temperature
+    td.text-left
+      img(src="http://api.yr.no/weatherapi/weathericon/1.1/?symbol=#{code};content_type=image/png")
+      span.text-muted
+        = name
+        

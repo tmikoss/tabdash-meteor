@@ -1,0 +1,22 @@
+template(name='trains')
+  table.table.trains
+    thead
+      tr
+        th
+        th Dole
+        th Salaspils
+    tbody
+      each trains
+        +trainRow
+
+template(name='trainRow')
+  tr
+    td.text-muted
+      = formattedTime
+    td
+      if dole
+        span.glyphicon.glyphicon-ok
+    td
+      if salaspils
+        span.glyphicon.glyphicon-ok
+        

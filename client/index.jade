@@ -25,52 +25,6 @@ template(name='header')
         .text-muted
           = name
 
-template(name='weather')
-  table.table.forecasts
-    thead
-      tr
-        th
-        th °C
-        th
-    tbody
-      each forecasts
-        +weatherRow
-
-template(name='weatherRow')
-  tr
-    td.text-muted
-      = formattedTime
-    td
-      strong
-        = temperature
-    td.text-left
-      img(src="http://api.yr.no/weatherapi/weathericon/1.1/?symbol=#{code};content_type=image/png")
-      span.text-muted
-        = name
-        
-template(name='trains')
-  table.table.trains
-    thead
-      tr
-        th
-        th Dole
-        th Salaspils
-    tbody
-      each trains
-        +trainRow
-
-template(name='trainRow')
-  tr
-    td.text-muted
-      = formattedTime
-    td
-      if dole
-        span.glyphicon.glyphicon-ok
-    td
-      if salaspils
-        span.glyphicon.glyphicon-ok
-        
-
 //-   %slide
 //-     .slide-content{ 'ng-controller' => 'RouteGroupsCtrl' }
 //-       .row
