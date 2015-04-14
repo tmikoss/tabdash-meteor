@@ -19,10 +19,10 @@ Template.carousel.onRendered = ->
 
 Template.carousel.gestures
   'swipeleft .carousel': (e, template) ->
-    template.$('.carousel').carousel 'prev'
+    template.$('.carousel').carousel('next').carousel('pause')
 
   'swiperight .carousel': (e, template) ->
-    template.$('.carousel').carousel 'next'
+    template.$('.carousel').carousel('prev').carousel('pause')
 
 Template.weather.helpers
   forecasts: ->
