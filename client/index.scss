@@ -2,6 +2,8 @@ $scale-unit: 5px;
 $text-color: #aaa;
 
 .carousel {
+  text-align: center;
+
   .item {
     min-height:  $scale-unit * 200;
   }

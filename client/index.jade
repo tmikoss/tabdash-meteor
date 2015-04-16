@@ -7,10 +7,12 @@ body
 template(name='carousel')
   .carousel.slide
     .carousel-inner
-      .item.active
+      .item
         +trains
       .item
         +weather
+      .item.active
+        +routes
         
 template(name='header')
   .row
@@ -24,18 +26,3 @@ template(name='header')
       each namedays
         .text-muted
           = name
-
-//-   %slide
-//-     .slide-content{ 'ng-controller' => 'RouteGroupsCtrl' }
-//-       .row
-//-         .route-group{ 'ng-repeat' => "routeGroup in routeGroups | orderBy : 'priority' " }
-//-           %h1
-//-             {{ routeGroup.name }}
-//-             %span.text-muted
-//-               {{ routeGroup.upcoming[0].time.fromNow() }}
-//-           .run.row{ 'ng-repeat' => 'run in routeGroup.upcoming'}
-//-             .col-xs-4.text-right.col-xs-offset-1
-//-               {{ run.number }}
-//-               %img{ 'ng-src' => 'images/{{ run.kind }}.png' }
-//-             .col-xs-6.time.text-left
-//-               {{ run.time.fromNow() }}
