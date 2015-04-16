@@ -4,15 +4,17 @@ template(name='routes')
         
 template(name='routeGroup')
   .route-group
-    h1= name
-    span.text-muted
-  each nextRuns
-    +routeRun
+    h1
+      = name
+      span.text-muted {{nextRuns.[0].fromNow}}
+    
+    each nextRuns
+      +routeRun
   
 template(name='routeRun')
   .row.run
-    .col-xs-4.text-right.col-xs-offset-1
+    .col-xs-4.text-right.col-xs-offset-2
       = number
-      img
+      img(src="/images/{{kind}}.png")
     .col-xs-6.time.text-left
       = fromNow
