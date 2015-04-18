@@ -19,8 +19,10 @@ updateForecasts = ->
 
   @Config.upsert { code: 'forecasts'}, $set: { updatedAt: new Date }
 
-Meteor.startup ->
+maybeUpdate = ->
   config = @Config.findOne { code: 'forecasts'}
 
   if !config?.updatedAt || config.updatedAt < moment().subtract(3, 'hours')._d
     updateForecasts()
+
+Meteor.setInterval maybeUpdate, 1000*60*5

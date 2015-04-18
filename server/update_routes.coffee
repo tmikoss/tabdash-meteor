@@ -103,8 +103,10 @@ updateRoutes = ->
 
   Config.upsert { code: 'routes' }, $set: { updatedAt: new Date }
 
-Meteor.startup ->
+maybeUpdate = ->
   config = Config.findOne { code: 'routes'}
 
   if !config?.updatedAt || config.updatedAt < moment().subtract(1, 'week')._d
     updateRoutes()
+
+Meteor.setInterval maybeUpdate, 1000*60*5
