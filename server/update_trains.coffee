@@ -27,12 +27,7 @@ updateTrains = ->
 
         TD.Trains.upsert { time: trainTime.toDate() }, $set: fields
 
-  TD.Config.upsert { code: 'trains'}, $set: { updatedAt: new Date }
+  TD.ticked 'trains'
 
-maybeUpdate = ->
-  config = TD.Config.findOne { code: 'trains'}
-
-  if !config?.updatedAt || config.updatedAt < moment().subtract(6, 'hours')._d
-    updateTrains()
-
-Meteor.setInterval maybeUpdate, 1000*60*5
+Meteor.startup ->
+  TD.onTick 'trains', 6, 'hours', updateTrains

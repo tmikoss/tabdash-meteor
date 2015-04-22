@@ -1,8 +1,8 @@
 forEachRoute = (queryBases, weekday, callback) ->
-  Routes.find($or: queryBases.map( (queryBase) -> $.merge { days: "#{if weekday is 0 then 7 else weekday}" }, queryBase ) ).forEach callback
+  TD.Routes.find($or: queryBases.map( (queryBase) -> $.merge { days: "#{if weekday is 0 then 7 else weekday}" }, queryBase ) ).forEach callback
 
 Template.routes.helpers
-  routeGroups: -> RouteGroups.find({}, { sort: { priority: 1 } })
+  routeGroups: -> TD.RouteGroups.find({}, { sort: { priority: 1 } })
 
 Template.routeGroup.helpers
   nextRuns: ->

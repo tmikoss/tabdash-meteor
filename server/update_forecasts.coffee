@@ -17,12 +17,7 @@ updateForecasts = ->
 
     TD.Forecasts.upsert dates, $set: details
 
-  TD.Config.upsert { code: 'forecasts'}, $set: { updatedAt: new Date }
+  TD.ticked 'forecasts'
 
-maybeUpdate = ->
-  config = TD.Config.findOne { code: 'forecasts'}
-
-  if !config?.updatedAt || config.updatedAt < moment().subtract(3, 'hours')._d
-    updateForecasts()
-
-Meteor.setInterval maybeUpdate, 1000*60*5
+Meteor.startup ->
+  TD.onTick 'forecasts', 3, 'hours', updateForecasts

@@ -101,12 +101,7 @@ updateRoutes = ->
 
   updateRouteGroups()
 
-  TD.Config.upsert { code: 'routes' }, $set: { updatedAt: new Date }
+  TD.ticked 'routes'
 
-maybeUpdate = ->
-  config = TD.Config.findOne { code: 'routes'}
-
-  if !config?.updatedAt || config.updatedAt < moment().subtract(1, 'week')._d
-    updateRoutes()
-
-Meteor.setInterval maybeUpdate, 1000*60*5
+Meteor.startup ->
+  TD.onTick 'routes', 1, 'week', updateRoutes

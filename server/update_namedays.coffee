@@ -9,12 +9,7 @@ updateNamedays = ->
       day:   item.day
       name:  item.name
 
-  TD.Config.upsert { code: 'namedays'}, $set: { updatedAt: new Date }
+  TD.ticked 'namedays'
 
-maybeUpdate = ->
-  config = TD.Config.findOne { code: 'namedays'}
-
-  if !config?.updatedAt || config.updatedAt < moment().subtract(1, 'month')._d
-    updateNamedays()
-
-Meteor.setInterval maybeUpdate, 1000*60*5
+Meteor.startup ->
+  TD.onTick 'namedays', 1, 'month', updateNamedays
