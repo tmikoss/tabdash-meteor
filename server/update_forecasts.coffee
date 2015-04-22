@@ -15,12 +15,12 @@ updateForecasts = ->
       name:        entry.symbol[0]['$'].name
       temperature: entry.temperature[0]['$'].value
 
-    @Forecasts.upsert dates, $set: details
+    TD.Forecasts.upsert dates, $set: details
 
-  @Config.upsert { code: 'forecasts'}, $set: { updatedAt: new Date }
+  TD.Config.upsert { code: 'forecasts'}, $set: { updatedAt: new Date }
 
 maybeUpdate = ->
-  config = @Config.findOne { code: 'forecasts'}
+  config = TD.Config.findOne { code: 'forecasts'}
 
   if !config?.updatedAt || config.updatedAt < moment().subtract(3, 'hours')._d
     updateForecasts()

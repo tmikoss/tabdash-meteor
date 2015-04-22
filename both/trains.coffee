@@ -1,4 +1,4 @@
-@Trains = new Mongo.Collection 'trains'
+TD.Trains = new Mongo.Collection 'trains'
 
 if Meteor.isServer
-  @Trains._ensureIndex { time: 1 }, { expireAfterSeconds: 0 }
+  TD.Trains._ensureIndex { time: 1 }, { expireAfterSeconds: 0 }

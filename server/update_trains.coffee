@@ -25,12 +25,12 @@ updateTrains = ->
         fields = {}
         fields[stopName] = true
 
-        @Trains.upsert { time: trainTime.toDate() }, $set: fields
+        TD.Trains.upsert { time: trainTime.toDate() }, $set: fields
 
-  @Config.upsert { code: 'trains'}, $set: { updatedAt: new Date }
+  TD.Config.upsert { code: 'trains'}, $set: { updatedAt: new Date }
 
 maybeUpdate = ->
-  config = @Config.findOne { code: 'trains'}
+  config = TD.Config.findOne { code: 'trains'}
 
   if !config?.updatedAt || config.updatedAt < moment().subtract(6, 'hours')._d
     updateTrains()

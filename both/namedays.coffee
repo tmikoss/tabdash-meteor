@@ -1,1 +1,1 @@
-@Namedays = new Mongo.Collection 'namedays'
+TD.Namedays = new Mongo.Collection 'namedays'

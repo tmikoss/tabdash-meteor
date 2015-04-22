@@ -1,1 +1,1 @@
-@RouteGroups = new Mongo.Collection 'routeGroups'
+TD.RouteGroups = new Mongo.Collection 'routeGroups'

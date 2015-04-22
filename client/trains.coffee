@@ -1,6 +1,6 @@
 Template.trains.helpers
   trains: ->
-    Trains.find({}, { sort: { time: 1 }}).fetch()
+    TD.Trains.find({}, { sort: { time: 1 }}).fetch()
 
 Template.trainRow.helpers
   formattedTime: ->

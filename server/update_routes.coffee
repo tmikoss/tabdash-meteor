@@ -51,7 +51,7 @@ routeGroupTemplates = [
 ]
 
 updateRouteGroups = ->
-  @RouteGroups.remove({})
+  TD.RouteGroups.remove({})
 
   for template in routeGroupTemplates
     record =
@@ -60,7 +60,7 @@ updateRouteGroups = ->
 
     record[i] = [] for i in [1..7]
 
-    Routes.find($or: template.routes).forEach (route) ->
+    TD.Routes.find($or: template.routes).forEach (route) ->
       routeTimes = (route.stops[template.stop] || []).map (time) ->
         time:   time
         kind:   route.kind
@@ -72,14 +72,14 @@ updateRouteGroups = ->
     for i in [1..7]
       record[i] = record[i].sort (a,b) -> a.time - b.time
 
-    @RouteGroups.insert record
+    TD.RouteGroups.insert record
 
 updateRoutes = ->
   rigasSatiksmeParser.loadStops HTTP.get("http://saraksti.rigassatiksme.lv/riga/stops.txt").content
 
   rigasSatiksmeParser.loadRoutes HTTP.get("http://saraksti.rigassatiksme.lv/riga/routes.txt").content
 
-  Routes.remove({})
+  TD.Routes.remove({})
 
   for route in rigasSatiksmeParser.routes
     dayMap = {}
@@ -91,7 +91,7 @@ updateRoutes = ->
         dayMap[days][stop].push route.times.times.shift()
 
     for days, stops of dayMap
-      Routes.insert
+      TD.Routes.insert
         number:    route.num
         direction: route.direction
         kind:      route.transport
@@ -101,10 +101,10 @@ updateRoutes = ->
 
   updateRouteGroups()
 
-  Config.upsert { code: 'routes' }, $set: { updatedAt: new Date }
+  TD.Config.upsert { code: 'routes' }, $set: { updatedAt: new Date }
 
 maybeUpdate = ->
-  config = Config.findOne { code: 'routes'}
+  config = TD.Config.findOne { code: 'routes'}
 
   if !config?.updatedAt || config.updatedAt < moment().subtract(1, 'week')._d
     updateRoutes()

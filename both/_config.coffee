@@ -1,1 +1,1 @@
-@Config = new Mongo.Collection 'config'
+TD.Config = new Mongo.Collection 'config'

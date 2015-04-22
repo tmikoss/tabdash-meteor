@@ -1,1 +1,1 @@
-@Routes = new Mongo.Collection 'routes'
+TD.Routes = new Mongo.Collection 'routes'
