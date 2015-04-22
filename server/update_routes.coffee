@@ -101,7 +101,12 @@ updateRoutes = ->
 
   updateRouteGroups()
 
-SyncedCron.add
-  name: 'updateRoutes'
-  schedule: (parser) ->  parser.recur().on(2).dayOfWeek()
-  job: updateRoutes
+  Config.upsert { code: 'routes' }, $set: { updatedAt: new Date }
+
+maybeUpdate = ->
+  config = Config.findOne { code: 'routes'}
+
+  if !config?.updatedAt || config.updatedAt < moment().subtract(1, 'week')._d
+    updateRoutes()
+
+Meteor.setInterval maybeUpdate, 1000*60*5

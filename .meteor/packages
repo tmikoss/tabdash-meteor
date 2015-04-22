@@ -19,4 +19,3 @@ meteorhacks:npm
 npm-container
 mrt:moment-timezone
 chriswessels:hammer
-percolate:synced-cron

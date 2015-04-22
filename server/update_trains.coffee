@@ -27,7 +27,12 @@ updateTrains = ->
 
         @Trains.upsert { time: trainTime.toDate() }, $set: fields
 
-SyncedCron.add
-  name: 'updateTrains'
-  schedule: (parser) -> parser.recur().on(1).hour()
-  job: updateTrains
+  @Config.upsert { code: 'trains'}, $set: { updatedAt: new Date }
+
+maybeUpdate = ->
+  config = @Config.findOne { code: 'trains'}
+
+  if !config?.updatedAt || config.updatedAt < moment().subtract(6, 'hours')._d
+    updateTrains()
+
+Meteor.setInterval maybeUpdate, 1000*60*5

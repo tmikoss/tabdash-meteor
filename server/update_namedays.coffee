@@ -9,7 +9,12 @@ updateNamedays = ->
       day:   item.day
       name:  item.name
 
-SyncedCron.add
-  name: 'updateNamedays'
-  schedule: (parser) -> parser.recur().first().dayOfMonth()
-  job: updateNamedays
+  @Config.upsert { code: 'namedays'}, $set: { updatedAt: new Date }
+
+maybeUpdate = ->
+  config = @Config.findOne { code: 'namedays'}
+
+  if !config?.updatedAt || config.updatedAt < moment().subtract(1, 'month')._d
+    updateNamedays()
+
+Meteor.setInterval maybeUpdate, 1000*60*5
