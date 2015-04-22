@@ -1,6 +1,6 @@
 Template.weather.helpers
   forecasts: ->
-    TD.Forecasts.find({}, { sort: { from: 1 }}).fetch()
+    TD.Forecasts.find({}, { sort: { from: 1 }})
 
 Template.weatherRow.helpers
   formattedTime: ->
