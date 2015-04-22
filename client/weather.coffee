@@ -1,7 +1,13 @@
 Template.weather.helpers
-  forecasts: ->
-    TD.Forecasts.find({}, { sort: { from: 1 }})
+  forecastsByDay: ->
+    currentTime.get()
+
+    groupedForecasts = _.groupBy TD.Forecasts.find({}, { sort: { from: 1 }}).fetch(), (forecast) ->
+      moment(forecast.from).format TD.dateFormat
+
+    { date: date, forecasts: forecasts } for date, forecasts of groupedForecasts
+
 
 Template.weatherRow.helpers
   formattedTime: ->
-    "#{moment(@from).format 'HH:mm'} - #{moment(@to).format 'HH:mm'}"
+    "#{moment(@from).format TD.timeFormat} - #{moment(@to).format TD.timeFormat}"

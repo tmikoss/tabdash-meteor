@@ -6,8 +6,15 @@ template(name='weather')
         th °C
         th
     tbody
-      each forecasts
-        +weatherRow
+      each forecastsByDay
+        +forecastDay
+
+template(name='forecastDay')
+  tr.active
+    td(colspan='3')
+      = date
+  each forecasts
+    +weatherRow
 
 template(name='weatherRow')
   tr

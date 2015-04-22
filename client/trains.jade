@@ -6,8 +6,15 @@ template(name='trains')
         th Dole
         th Salaspils
     tbody
-      each trains
-        +trainRow
+      each trainsByDay
+        +trainDay
+
+template(name='trainDay')
+  tr.active
+    td(colspan='3')
+      = date
+  each trains
+    +trainRow
 
 template(name='trainRow')
   tr

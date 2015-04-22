@@ -1,9 +1,9 @@
 Template.header.helpers
   formattedTime: ->
-    currentTime.get().format('HH:mm')
+    currentTime.get().format(TD.timeFormat)
 
   formattedDate: ->
-    currentTime.get().format('ddd DD MMM')
+    currentTime.get().format(TD.dateFormat)
 
   namedays: ->
     now = currentTime.get()
