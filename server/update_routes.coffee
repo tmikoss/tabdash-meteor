@@ -10,12 +10,12 @@ routeGroupTemplates = [
     ]
   },
   {
-    name: 'Mežaparks'
-    priority: 3
-    stop: '3130'
+    name: 'Pētersalas iela'
+    priority: 2
+    stop: '2008'
     routes: [
-      { number: '11', kind: 'tram', direction: 'a-b' }
-      { number: '11', kind: 'tram', direction: 'a-d5' }
+      { number: '1', kind: 'trol', direction: 'a-b' }
+      { number: '1', kind: 'trol', direction: 'a-d1' }
     ]
   },
   {
@@ -31,7 +31,7 @@ routeGroupTemplates = [
   },
   {
     name: 'Stacija'
-    priority: 2
+    priority: 3
     stop: '2063'
     routes: [
       { number: '11', kind: 'trol', direction: 'b-d1_12345' }

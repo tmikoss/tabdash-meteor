@@ -29,7 +29,7 @@
           "version": "1.1.1"
         },
         "htmlparser2": {
-          "version": "3.8.2",
+          "version": "3.8.3",
           "dependencies": {
             "domhandler": {
               "version": "2.3.0"
@@ -44,7 +44,7 @@
               "version": "1.1.13",
               "dependencies": {
                 "core-util-is": {
-                  "version": "1.0.1"
+                  "version": "1.0.2"
                 },
                 "isarray": {
                   "version": "0.0.1"
@@ -71,7 +71,7 @@
           }
         },
         "lodash": {
-          "version": "3.6.0"
+          "version": "3.10.1"
         }
       }
     },
@@ -82,10 +82,10 @@
           "version": "0.6.1"
         },
         "xmlbuilder": {
-          "version": "2.6.2",
+          "version": "4.1.0",
           "dependencies": {
             "lodash": {
-              "version": "3.5.0"
+              "version": "3.10.1"
             }
           }
         }

@@ -7,6 +7,10 @@ $text-color: #aaa;
   .item {
     min-height:  $scale-unit * 200;
   }
+
+  a.left, a.right {
+    background-image: none;
+  }
 }
 
 .route-group {
