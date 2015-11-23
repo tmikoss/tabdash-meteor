@@ -61,7 +61,7 @@ updateRouteGroups = ->
     record[i] = [] for i in [1..7]
 
     TD.Routes.find($or: template.routes).forEach (route) ->
-      routeTimes = (route.stops[template.stop] || []).map (time) ->
+      routeTimes = _.uniq (route.stops[template.stop] || []).map (time) ->
         time:   time
         kind:   route.kind
         number: route.number
