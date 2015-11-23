@@ -1,3 +1,8 @@
+Template.header.onCreated ->
+  @autorun ->
+    now = currentTime.get()
+    @subscribe ['namedays', now.month() + 1, now.date()]
+
 Template.header.helpers
   formattedTime: ->
     currentTime.get().format(TD.timeFormat)
@@ -6,8 +11,7 @@ Template.header.helpers
     currentTime.get().format(TD.dateFormat)
 
   namedays: ->
-    now = currentTime.get()
-    TD.Namedays.find({ month: now.month() + 1, day: now.date() }, { sort: { name: 1 }}).fetch()
+    TD.Namedays.find {}, { sort: { name: 1 }}
 
 Template.carousel.onRendered ->
   @$('.carousel').carousel
@@ -19,7 +23,6 @@ Template.carousel.events
 
   'click .right': (e, template) ->
     template.$('.carousel').carousel('next').carousel('pause')
-
 
 Template.carousel.gestures
   'swipeleft .carousel': (e, template) ->

@@ -1,3 +1,6 @@
+Template.weather.onCreated ->
+  @subscribe 'forecasts'
+
 Template.weather.helpers
   forecastsByDay: ->
     currentTime.get()

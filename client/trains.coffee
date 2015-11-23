@@ -1,3 +1,6 @@
+Template.trains.onCreated ->
+  @subscribe 'trains'
+
 Template.trains.helpers
   trainsByDay: ->
     currentTime.get()
