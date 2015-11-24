@@ -11,6 +11,6 @@ TD.onTick = (code, amount, unit, callback) ->
 
 runCallbacks = -> callback() for callback in callbacks
 
-Meteor.setInterval runCallbacks, 1000*60
+Meteor.setInterval runCallbacks, 1000*60*10
 
 runCallbacks()
